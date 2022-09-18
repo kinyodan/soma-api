@@ -1,0 +1,55 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uuid: MyString
+  student_id: 1
+  ksce_cert: MyString
+  passport: MyString
+  school_leaving: MyString
+  visa_refusals: MyString
+  degree_certificate: MyString
+  degree_transcript: MyString
+  passport_copy: MyString
+  recommendation_letters: MyString
+  cv: MyString
+  personal_statement: MyString
+  confirmation_of_acceptance: MyString
+  bank_statement: MyString
+  previous_visa: MyString
+  status: MyString
+  upload_by: MyString
+  applicatio_admin: MyString
+  progress_state: MyString
+  progress_steps: 1
+  current_step: 1
+  current_agent_processing: 1
+  workflow_state: MyString
+  workflow_status: MyString
+  worklow_progress: MyString
+
+two:
+  uuid: MyString
+  student_id: 1
+  ksce_cert: MyString
+  passport: MyString
+  school_leaving: MyString
+  visa_refusals: MyString
+  degree_certificate: MyString
+  degree_transcript: MyString
+  passport_copy: MyString
+  recommendation_letters: MyString
+  cv: MyString
+  personal_statement: MyString
+  confirmation_of_acceptance: MyString
+  bank_statement: MyString
+  previous_visa: MyString
+  status: MyString
+  upload_by: MyString
+  applicatio_admin: MyString
+  progress_state: MyString
+  progress_steps: 1
+  current_step: 1
+  current_agent_processing: 1
+  workflow_state: MyString
+  workflow_status: MyString
+  worklow_progress: MyString

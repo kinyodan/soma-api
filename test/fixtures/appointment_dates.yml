@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appointment_id: 1
+  designation: MyString
+  date: MyString
+  day: 1
+  future: false
+  hasDay: false
+  hasTime: false
+  hour: 1
+  minute: 1
+  month: 1
+  past: false
+  present: false
+  time: MyString
+  weekday: 1
+  year: 1
+
+two:
+  appointment_id: 1
+  designation: MyString
+  date: MyString
+  day: 1
+  future: false
+  hasDay: false
+  hasTime: false
+  hour: 1
+  minute: 1
+  month: 1
+  past: false
+  present: false
+  time: MyString
+  weekday: 1
+  year: 1

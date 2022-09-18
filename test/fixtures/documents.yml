@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: 1
+  student_application_id: 1
+  document_name: MyString
+  document_type: MyString
+  document: MyString
+  status: false
+
+two:
+  student_id: 1
+  student_application_id: 1
+  document_name: MyString
+  document_type: MyString
+  document: MyString
+  status: false
