@@ -211,6 +211,7 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pg (1.4.3)
     psych (4.0.4)
       stringio
     public_suffix (4.0.7)
@@ -264,7 +265,6 @@ GEM
     rolify (6.0.0)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
-    sqlite3 (1.4.4)
     ssrf_filter (1.0.7)
     stringio (3.0.2)
     strscan (3.0.3)
@@ -303,12 +303,12 @@ DEPENDENCIES
   fast_jsonapi
   figaro
   mini_magick
+  pg
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.3, >= 7.0.3.1)
   rdoc
   rolify
-  sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION
