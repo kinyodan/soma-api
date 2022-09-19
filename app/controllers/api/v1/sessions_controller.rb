@@ -21,7 +21,7 @@ class Api::V1::SessionsController < ApplicationController
       end
 
     else
-      render json: { data: :unauthorized, status: :created, message: 'user failed logged in' }
+      render json: { data: :unauthorized, status: false, message: 'user failed logged in' }
     end
   end
 
