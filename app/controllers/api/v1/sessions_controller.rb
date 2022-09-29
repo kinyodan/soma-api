@@ -2,14 +2,15 @@ require 'jwt'
 
 class Api::V1::SessionsController < ApplicationController
   # skip_before_action :verify_authenticated
-  def initMail
-    p "initializing mailer"
-    current_user = "kinyodaniel@gmail.com"
-    mailer = UserMailer.welcome_email(current_user)
-    mailer_response = mailer.deliver_now
-    mailgun_message_id = mailer_response.message_id
-    p mailgun_message_id
-  end
+  #
+  # def initMail
+  #   p "initializing mailer"
+  #   current_user = "kinyodaniel@gmail.com"
+  #   mailer = UserMailer.welcome_email(current_user)
+  #   mailer_response = mailer.deliver_now
+  #   mailgun_message_id = mailer_response.message_id
+  #   p mailgun_message_id
+  # end
 
   def create
     header_params = eval(request.headers['HTTP_AUTHORIZATION'])
