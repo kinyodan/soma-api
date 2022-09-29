@@ -4,6 +4,12 @@ require "active_support/core_ext/integer/time"
 # test suite. You never need to work with it otherwise. Remember that
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs. Don't rely on the data there!
+config.action_mailer.delivery_method = :mailgun
+config.action_mailer.mailgun_settings = {
+  api_key: ENV.fetch('MAILGUN_API_KEY'),
+  domain: 'wankimani.com',
+  # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
+}
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -23,7 +29,7 @@ Rails.application.configure do
   }
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
   config.cache_store = :null_store
 

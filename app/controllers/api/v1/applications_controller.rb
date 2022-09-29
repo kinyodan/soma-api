@@ -5,7 +5,6 @@ class Api::V1::ApplicationsController < ApplicationController
   def verify_authenticated
     header_params = eval(request.headers['HTTP_AUTHORIZATION'])
     decoded_response = decrypt(header_params[:token], 'hmac_secret_key', 'HS256')
-
     if (@user = User.find_by_jti(decoded_response[:jti]))
       render json: { status: true , message: 'User Authenticated ' }
     else
@@ -16,7 +15,6 @@ class Api::V1::ApplicationsController < ApplicationController
   # GET /applications
   def index
     @applications = Application.all
-
     render json: @applications
   end
 

@@ -2,6 +2,14 @@ require 'jwt'
 
 class Api::V1::SessionsController < ApplicationController
   # skip_before_action :verify_authenticated
+  def initMail
+    p "initializing mailer"
+    current_user = "kinyodaniel@gmail.com"
+    mailer = UserMailer.welcome_email(current_user)
+    mailer_response = mailer.deliver_now
+    mailgun_message_id = mailer_response.message_id
+    p mailgun_message_id
+  end
 
   def create
     header_params = eval(request.headers['HTTP_AUTHORIZATION'])
@@ -11,9 +19,11 @@ class Api::V1::SessionsController < ApplicationController
       role_user = @user.has_role? :student
       role_admin = @user.has_role? :admin
       @student = Student.where(email: @user.email).first
+      student_uuid = nil
+      student_uuid = @student.uuid if @student
 
       if role_user && !role_admin
-        render json: { user: encoded_response, role_student: role_user , profile: @user.email,id: @student.uuid , status: true, message: 'user logged in' }
+        render json: { user: encoded_response, role_student: role_user , profile: @user.email,id: student_uuid , status: true, message: 'user logged in' }
       end
 
       if role_admin
@@ -32,7 +42,7 @@ class Api::V1::SessionsController < ApplicationController
   def verify_authentication
     header_params = eval(request.headers['HTTP_AUTHORIZATION'])
     decoded_response = decrypt(header_params[:token], 'hmac_secret_key', 'HS256')
-
+    initMail
     if (@user = User.find_by_jti(decoded_response[:jti]))
       role_user = @user.has_role? :student
       role_admin = @user.has_role? :admin

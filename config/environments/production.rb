@@ -2,8 +2,13 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
-  # Code is not reloaded between requests.
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV.fetch('MAILGUN_API_KEY'),
+    domain: 'wankimani.com',
+    # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
+  }
+  # Code is not reloaded between requests.ral
   config.cache_classes = true
 
   # Eager load code on boot. This eager loads most of Rails and

@@ -24,7 +24,7 @@ class Api::V1::StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      render json: @student, status: :created, location: @student
+      render json: @student, status: :created, data: @student
     else
       render json: @student.errors, status: :unprocessable_entity
     end
@@ -60,6 +60,6 @@ class Api::V1::StudentsController < ApplicationController
   end
     # Only allow a list of trusted parameters through.
     def student_params
-      params.permit(:first_name, :second_name, :last_name, :phone, :email, :location, :country_id, :country_code,:status)
+      params.permit(:first_name, :second_name, :last_name, :phone, :email, :location, :country_id, :country_code,:status, :pass, :confirm_pass)
     end
 end
