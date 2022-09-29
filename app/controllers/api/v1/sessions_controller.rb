@@ -42,7 +42,6 @@ class Api::V1::SessionsController < ApplicationController
   def verify_authentication
     header_params = eval(request.headers['HTTP_AUTHORIZATION'])
     decoded_response = decrypt(header_params[:token], 'hmac_secret_key', 'HS256')
-    initMail
     if (@user = User.find_by_jti(decoded_response[:jti]))
       role_user = @user.has_role? :student
       role_admin = @user.has_role? :admin
