@@ -15,6 +15,7 @@ class Api::V1::SessionsController < ApplicationController
   def create
     header_params = eval(request.headers['HTTP_AUTHORIZATION'])
     user = User.where(email: header_params[:email]).first
+    p header_params
     if (@user = User.find_by_email(header_params[:email])) && @user.valid_password?(header_params[:password])
       encoded_response = encrypt(user.as_json(only: [:jti, :email]), 'hmac_secret_key', 'HS256')
       role_user = @user.has_role? :student

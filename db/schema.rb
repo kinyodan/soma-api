@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_01_081419) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_01_122022) do
   create_table "applications", force: :cascade do |t|
     t.string "uuid"
     t.integer "student_id"
@@ -189,6 +189,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_081419) do
     t.datetime "updated_at", null: false
     t.string "uuid"
     t.boolean "deleted"
+    t.string "password"
+    t.string "confirm_password"
   end
 
   create_table "users", force: :cascade do |t|

@@ -22,12 +22,22 @@ class Api::V1::StudentsController < ApplicationController
 
   # POST /students
   def create
-    @student = Student.new(student_params)
-    if @student.save
-      render json: @student, status: :created, data: @student
+    header_params = eval(request.headers['HTTP_AUTHORIZATION'])
+    p header_params[:password]
+    @student_present = Student.where(email: header_params[:email]).first
+    @student_user_present =  User.where(email: header_params[:email]).first
+
+    if @student_present && @student_user_present
+      render json: "Email already exists" , status: false , data: :unprocessable_entity
     else
-      render json: @student.errors, status: :unprocessable_entity
+      @student = Student.new(student_params)
+      if @student.save
+        render json: @student, status: :created, data: @student
+      else
+        render json: @student.errors, status: false , data: :unprocessable_entity
+      end
     end
+
   end
 
   # PATCH/PUT /students/1
@@ -60,6 +70,9 @@ class Api::V1::StudentsController < ApplicationController
   end
     # Only allow a list of trusted parameters through.
     def student_params
-      params.permit(:first_name, :second_name, :last_name, :phone, :email, :location, :country_id, :country_code,:status, :pass, :confirm_pass)
+      params.permit(:first_name, :second_name, :last_name, :phone, :email, :location, :country_id, :country_code,:status, :password, :confirm_password)
+    end
+  def student_params_clean
+      params.permit(:first_name, :second_name, :last_name, :phone, :email, :location, :country_id, :country_code,:status)
     end
 end

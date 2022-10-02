@@ -14,8 +14,10 @@ class Student < ApplicationRecord
 
   def create_user
     random_string = "password01"
-    @user = User.new(email: self.email , password: random_string, password_confirmation: random_string)
+    @user = User.new(email: self.email , password: self.password, password_confirmation: self.confirm_password)
     @user.save
+    self.password = nil
+    self.confirm_password = nil
     send_email(@user)
   end
 

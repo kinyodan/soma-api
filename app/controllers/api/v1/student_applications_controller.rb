@@ -24,6 +24,7 @@ class Api::V1::StudentApplicationsController < ApplicationController
   # POST /student_applications
   def create
     @student_present = Student.find(student_application_params[:student_id])
+    p student_application_params
     if @student_present
       @student_application = StudentApplication.new(student_application_params)
       @student_application.student_id = @student_present.id if @student_present
