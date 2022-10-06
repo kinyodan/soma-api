@@ -1,4 +1,4 @@
-class Api::V1::DashboardController < ApplicationController
+class Api::V1::DashboardController < BaseController
   def index
     students_count=Student.all
     applications=StudentApplication.all

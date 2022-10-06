@@ -1,4 +1,4 @@
-class Api::V1::StudentsController < ApplicationController
+class Api::V1::StudentsController < BaseController
   before_action :set_student, only: %i[  update destroy ]
   before_action :set_student_by_uuid, only: %i[ show update destroy applications ]
 

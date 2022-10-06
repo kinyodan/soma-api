@@ -1,4 +1,4 @@
-class Api::V1::StudentApplicationsController < ApplicationController
+class Api::V1::StudentApplicationsController < BaseController
   before_action :set_student_application, only: %i[show update destroy soft_destroy]
 
   # GET /student_applications
