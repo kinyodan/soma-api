@@ -32,7 +32,7 @@ class Api::V1::StudentsController < ApplicationController
     else
       @student = Student.new(student_params)
       if @student.save
-        render json: @student, status: :created, data: @student
+        render json: {message: "Sign up successfull", status: true , data: @student}
       else
         render json: @student.errors, status: false , data: :unprocessable_entity
       end
@@ -60,19 +60,22 @@ class Api::V1::StudentsController < ApplicationController
       @student = Student.find(params[:id])
     end
 
-  def check_admin
-    # @admin_user =  User.find(params[:user])
-  end
+    def check_admin
+     # @admin_user =  User.find(params[:user])
+    end
 
-  def set_student_by_uuid
-    @student_by_uuid = Student.find_by(uuid: params[:id])
-    p "student by uuid listed"
-  end
+    def set_student_by_uuid
+     @student_by_uuid = Student.find_by(uuid: params[:id])
+     p "student by uuid listed"
+    end
+    
     # Only allow a list of trusted parameters through.
     def student_params
       params.permit(:first_name, :second_name, :last_name, :phone, :email, :location, :country_id, :country_code,:status, :password, :confirm_password)
     end
-  def student_params_clean
+    
+    def student_params_clean
       params.permit(:first_name, :second_name, :last_name, :phone, :email, :location, :country_id, :country_code,:status)
     end
+
 end

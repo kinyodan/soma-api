@@ -1,4 +1,4 @@
-class Api::V1::InstitutionsController < ApplicationController
+class Api::V1::InstitutionsController < BaseController
   before_action :set_institution, only: %i[ show update destroy ]
 
   # GET /institutions
