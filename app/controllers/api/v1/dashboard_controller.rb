@@ -1,17 +1,24 @@
 class Api::V1::DashboardController < BaseController
   def index
-    students_count=Student.all
-    applications=StudentApplication.all
-    get_completed= StudentApplication.where(workflow_state: "completed",
-                                              workflow_status: "completed",
-                                              worklow_progress: "completed")
+    students_count = Student.count
+    applications_count = StudentApplication.count
+    completed_applications_count = StudentApplication.where(
+      workflow_state: "completed",
+      workflow_status: "completed",
+      worklow_progress: "completed"
+    ).count
 
-    applications_list = StudentApplication.all.limit(5)
-    @response = { status: true, message: "Dashboard data listed",data: {students_count: students_count.count,
-                                                                        applications_count:applications.count,
-                                                                        completed_applications:get_completed.count,
-                                                                        applications_list: applications_list }}
-    render json: @response
+    recent_applications = StudentApplication.limit(5)
+
+    render json: {
+      status: true,
+      message: "Dashboard data listed successfully",
+      data: {
+        students_count: students_count,
+        applications_count: applications_count,
+        completed_applications: completed_applications_count,
+        recent_applications: recent_applications
+      }
+    }
   end
-
 end

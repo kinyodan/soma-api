@@ -3,7 +3,10 @@ class Api::V1::InstitutionsController < BaseController
 
   # GET /institutions
   def index
-    @institutions = Institution.all
+    @institutions = Institution.paginate(
+      page: params[:page], 
+      per_page: params[:per_page] || 10
+    )
     @response = { status: true, message: "Institutions listed",data: @institutions }
     render json: @response
   end
