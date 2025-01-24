@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe DashboardController, type: :request do
+RSpec.describe Api::V1::DashboardController, type: :request do
   describe "GET /dashboard" do
     it "returns a successful response" do
       get dashboard_index_path

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ApplicationsController, type: :request do
+RSpec.describe Api::V1::ApplicationsController, type: :request do
   let!(:application) { create(:application) } # Assumes you have a FactoryBot factory for Application
 
   describe "GET /applications" do

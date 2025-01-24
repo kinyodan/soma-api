@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe InstitutionsController, type: :request do
+RSpec.describe Api::V1::InstitutionsController, type: :request do
   let(:institution) { institutions(:one) }
 
   describe "GET /institutions" do

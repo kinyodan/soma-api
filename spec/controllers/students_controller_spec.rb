@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe StudentsController, type: :request do
+RSpec.describe Api::V1::StudentsController, type: :request do
   let(:student) { students(:one) }
 
   describe "GET /students" do

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AppointmentsController, type: :request do
+RSpec.describe Api::V1::AppointmentsController, type: :request do
   let!(:appointment) { create(:appointment) } 
 
   describe "GET /appointments" do
